@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class OrderListRepo implements OrderRepoInterface {
-    private List<Order> orders;
+    private final List<Order> orders;
 
     public OrderListRepo() {
         this.orders = new ArrayList<>();

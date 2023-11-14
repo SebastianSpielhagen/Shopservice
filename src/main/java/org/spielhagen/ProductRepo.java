@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ProductRepo {
-    private List<Product> products;
+    private final List<Product> products;
 
     public ProductRepo() {
         this.products = new ArrayList<>();

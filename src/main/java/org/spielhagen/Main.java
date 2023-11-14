@@ -6,6 +6,20 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         OrderRepoInterface orderRepo = new OrderMapRepo();
+        ShopService shopServiceWithListRepo = getShopService(orderRepo);
+
+        Product product3 = new Product(3, "Produkt 3");
+        Product product4 = new Product(4, "Produkt 4");
+
+        List<Product> orderedProducts2 = new ArrayList<>();
+        orderedProducts2.add(product3);
+        orderedProducts2.add(product4);
+        Order order2 = new Order(2, orderedProducts2);
+
+        shopServiceWithListRepo.placeOrder(order2);
+    }
+
+    private static ShopService getShopService(OrderRepoInterface orderRepo) {
         ProductRepo productRepo = new ProductRepo();
         ShopService shopService = new ShopService(orderRepo, productRepo);
 
@@ -20,16 +34,6 @@ public class Main {
         shopService.placeOrder(order);
 
         OrderRepoInterface orderListRepo = new OrderListRepo();
-        ShopService shopServiceWithListRepo = new ShopService(orderListRepo);
-
-        Product product3 = new Product(3, "Produkt 3");
-        Product product4 = new Product(4, "Produkt 4");
-
-        List<Product> orderedProducts2 = new ArrayList<>();
-        orderedProducts2.add(product3);
-        orderedProducts2.add(product4);
-        Order order2 = new Order(2, orderedProducts2);
-
-        shopServiceWithListRepo.placeOrder(order2);
+        return new ShopService(orderListRepo);
     }
 }

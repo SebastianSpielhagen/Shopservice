@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 class OrderMapRepo implements OrderRepoInterface {
-    private Map<Integer, Order> orderMap;
+    private final Map<Integer, Order> orderMap;
 
     public OrderMapRepo() {
         this.orderMap = new HashMap<>();
@@ -14,12 +14,12 @@ class OrderMapRepo implements OrderRepoInterface {
 
     @Override
     public void addOrder(Order order) {
-        orderMap.put(order.getOrderId(), order);
+        orderMap.put(order.orderId(), order);
     }
 
     @Override
     public void removeOrder(Order order) {
-        orderMap.remove(order.getOrderId());
+        orderMap.remove(order.orderId());
     }
 
     @Override

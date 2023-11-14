@@ -1,23 +1,15 @@
 package org.spielhagen;
 
 class Product {
-    private int productId;
-    private String productName;
+    private final int productId;
+    private final String productName;
 
     public Product(int productId, String productName) {
         this.productId = productId;
         this.productName = productName;
     }
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    @Override
+   @Override
     public String toString() {
         return "Product [productId=" + productId + ", productName=" + productName + "]";
     }

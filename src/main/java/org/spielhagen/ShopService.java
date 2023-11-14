@@ -1,9 +1,10 @@
 package org.spielhagen;
 
+import java.util.HashSet;
 import java.util.List;
 
 class ShopService {
-    private OrderRepoInterface orderRepo;
+    private final OrderRepoInterface orderRepo;
     private ProductRepo productRepo;
 
     // Konstruktor für den Fall, dass sowohl OrderRepoInterface als auch ProductRepo übergeben werden
@@ -19,10 +20,10 @@ class ShopService {
 
     // Methode zum Aufgeben einer Bestellung
     public void placeOrder(Order order) {
-        List<Product> orderedProducts = order.getOrderedProducts();
+        List<Product> orderedProducts = order.orderedProducts();
         if (productRepo != null) {
             List<Product> availableProducts = productRepo.getProducts();
-            if (availableProducts.containsAll(orderedProducts)) {
+            if (new HashSet<>(availableProducts).containsAll(orderedProducts)) {
                 orderRepo.addOrder(order);
                 System.out.println("Bestellung erfolgreich aufgegeben: " + order);
             } else {
